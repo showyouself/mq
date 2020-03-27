@@ -1,15 +1,14 @@
-package com.zengbingo.mq.publisher;
+package com.zengbingo.activeMQ.publisher;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 @Component
 public class RabbitPub {
 
-    @Resource
+    @Autowired
     RabbitTemplate rabbitTemplate;
 
     public String sendMessage(){

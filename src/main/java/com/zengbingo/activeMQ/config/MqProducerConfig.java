@@ -1,11 +1,16 @@
-package com.zengbingo.mq.config;
+package com.zengbingo.activeMQ.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.AbstractApplicationContext;
+
+import javax.annotation.Resource;
 
 /**
  * @Author mark
@@ -14,9 +19,13 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 public class MqProducerConfig {
 
+    @Resource
+    AbstractApplicationContext abstractApplicationContext;
+
     @Bean
     public ConnectionFactory connectionFactory(com.rabbitmq.client.ConnectionFactory rabbitConnectionFactory){
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory(rabbitConnectionFactory);
+        abstractApplicationContext.refresh();
         return connectionFactory;
     }
 

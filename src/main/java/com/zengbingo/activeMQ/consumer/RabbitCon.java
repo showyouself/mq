@@ -1,4 +1,4 @@
-package com.zengbingo.mq.consumer;
+package com.zengbingo.activeMQ.consumer;
 
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
